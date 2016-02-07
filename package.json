@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "description": "Codestyle taskrunner",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-composer": "^0.4.0",
+    "gulp-help": "^1.6.1",
+    "gulp-if": "^2.0.0",
+    "gulp-phpcbf": "^0.1.2",
+    "gulp-phpcpd": "^1.0.1",
+    "gulp-phpcs": "^1.0.0",
+    "gulp-phpunit": "^0.12.1",
+    "gulp-shell": "*",
+    "gulp-util": "^3.0.7",
+    "minimist": "^1.2.0",
+    "phplint": "^1.7.0",
+    "require-dir": "*",
+    "file-exists": "^1.0.0",
+    "lodash": "^4.2.1"
+  }
+}

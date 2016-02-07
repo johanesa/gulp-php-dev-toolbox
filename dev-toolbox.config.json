@@ -1,0 +1,17 @@
+{
+  "source": "",
+  "output:": "",
+  "tasksLocation": "",
+  "tasks": {
+     "style:syntax": {
+       "source": ["Library/**/*.php", "Resources/UnitTests/**/*.php"]
+     },
+    "structure:duplication": {
+      "source": ["Library/**/*.php"]
+    },
+    "structure:complexity": {
+      "source": ["Library/"]
+    }
+  }
+}
+
