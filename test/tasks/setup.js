@@ -37,14 +37,4 @@ gulp.task('copy:tasks', false, ['copy:gulpfiles'], function () {
     .pipe(gulp.dest(commandLineOptions.destination + '/tasks/'))
 });
 
-gulp.task('npm:install', false, ['copy:gulpfiles', 'copy:tasks'], function () {
-  if(!commandLineOptions.destination) {
-    gutil.log(gutil.colors.red('Can \'t setup php dev tools, missing destination directory.'));
-    return;
-  }
-
-  return gulp.src('', {read: false})
-    .pipe(shell(['cd ' + commandLineOptions.destination + ' && npm install']));
-});
-
-gulp.task('setup', 'Setup the gulp php dev tools into your project', ['copy:gulpfiles', 'copy:tasks', 'npm:install']);
+gulp.task('setup', 'Setup the gulp php dev tools into your project', ['copy:gulpfiles', 'copy:tasks']);
