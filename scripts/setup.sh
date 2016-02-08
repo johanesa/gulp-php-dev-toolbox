@@ -6,6 +6,12 @@ then
   exit 1
 fi
 
+if [ -z "$2" ]
+then
+  echo "No setup source directory argument supplied."
+  exit 1
+fi
+
 if [ ! -d $1 ]
 then
   mkdir $1
