@@ -11,6 +11,8 @@ then
   mkdir $1
 fi
 
+cd $2
+
 rm -rf node_modules
 cp gulpfile.js $1
 cp package.json $1
