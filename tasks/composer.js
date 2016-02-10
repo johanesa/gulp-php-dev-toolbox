@@ -31,4 +31,6 @@ gulp.task('clear:vendor', 'Clear the composer vendor folder.', function() {
   return del(['vendor/']);
 });
 
+gulp.task('composer', ['composer:install']);
+
 gulp.task('default', ['composer:install']);

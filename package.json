@@ -1,7 +1,10 @@
 {
-  "version": "0.3.0",
-  "description": "Codestyle taskrunner",
+  "description": "Php development tools toolbox taskrunner",
   "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richardregeer/gulp-php-dev-toolbox"
+  },
   "devDependencies": {
     "del": "^2.2.0",
     "file-exists": "^1.0.0",
@@ -19,5 +22,8 @@
     "minimist": "^1.2.0",
     "phplint": "^1.7.0",
     "require-dir": "*"
-  }
+  },
+  "author": "Richard Regeer",
+  "license": "MIT",
+  "readmeFilename": "README.md",
 }

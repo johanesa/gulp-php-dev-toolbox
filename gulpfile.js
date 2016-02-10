@@ -12,4 +12,4 @@ catch(error) {
 
 gulp.task.configuration = configuration;
 
-gulp.task('default', ['composer:install', 'tests', 'checkstyle', 'checkstructure']);
+gulp.task('default', ['composer:install', 'tests', 'checkstyle']);
