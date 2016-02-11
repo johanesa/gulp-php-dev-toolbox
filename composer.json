@@ -1,7 +1,7 @@
 {
   "name": "rregeer/gulp-php-dev-toolbox",
   "description": "Php development toolbox using the gulp taskrunner",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "keywords": [
     "Testing", "PHP", "phpunit", "Unittest", "Codestyle", "CI",
     "Code complexity", "phpcs", "phpcbf", "phplint", "Gulp", "phpmd",
@@ -9,6 +9,9 @@
     "linting", "Composer"],
   "license": "MIT",
   "minimum-stability": "dev",
+  "scripts": {
+    "post-install-cmd": "scripts/setup.sh ../../ ./"
+  },
   "require": {
     "php": ">=5.5.0"
   },
