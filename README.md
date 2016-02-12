@@ -16,7 +16,7 @@ Composer will not automatically call scripts from dependencies. To setup the too
 ```bash
 composer require --dev rregeer/gulp-php-dev-toolbox
 composer install
-vendor/rregeer/gulp-php-dev-toolbox/scripts/setup.sh <path/to/your/project/> <path/of/your/project>/vendor/rregeer/gulp-php-dev-toolbox/
+vendor/bin/setup-php-toolbox <path/to/your/project/> <path/of/your/project>/vendor/rregeer/gulp-php-dev-toolbox/
 ```
 
 ## Install it manually by using git
@@ -24,17 +24,18 @@ Just clone the git repository and start the setup script. The setup script will 
 ```bash
 git clone git://github.com/richardregeer/gulp-php-dev-toolbox.git
 cd gulp-php-dev-toolbox
-./scripts/setup.sh <path/to/destination> ./
+bin/setup-php-toolbox <path/to/destination> ./
 cd <path/to/destination>
 ```
 
-If you just want to install it in the dev-toolbox directory itself, you can also directly call npm install.
+<!-- If you just want to install it in the dev-toolbox directory itself, you can also directly call npm install.
 ```bash
 git clone git://github.com/richardregeer/gulp-php-dev-toolbox.git
 cd gulp-php-dev-toolbox
 npm install
+npm install gulp -g
 gulp composer:install
-```
+``` -->
 
 # Available tasks
 To see all the available tasks
@@ -74,7 +75,7 @@ Instead of setting the source of the task as a command line argument using *--so
 }
 ```
 
-### projectRoot
+<!-- ### projectRoot
 The project root can also be changed. This can be used if you don't want that the toolbox is a part of your project for example.
 The working directory must be the toolbox else the gulp task runner can't find the main gulp file.
 
@@ -83,4 +84,4 @@ The working directory must be the toolbox else the gulp task runner can't find t
 {
   "projectRoot": "/development/php/hello-world-project"
 }
-```
+``` -->

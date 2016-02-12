@@ -12,4 +12,10 @@ catch(error) {
 
 gulp.task.configuration = configuration;
 
+if (!configuration.projectRoot) {
+  configuration.projectRoot = './';
+}
+
+configuration.projectRoot = gulp.task.configuration.projectRoot.trim('/');
+
 gulp.task('default', ['composer:install', 'tests', 'checkstyle']);
