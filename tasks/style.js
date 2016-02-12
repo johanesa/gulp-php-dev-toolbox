@@ -13,7 +13,7 @@ var knownOptions = {
 
 var commandLineOptions = minimist(process.argv.slice(2), knownOptions);
 
-gulp.task('style:fix', 'Auto fix the php code styling using php code beautifier. Requires a phpcs.xml configuration file.', ['composer:install'], function () {
+gulp.task('style:fix', 'Auto fix the php code styling using php code beautifier. Requires a phpcs.xml configuration file.', function () {
   if(!fileExists('phpcs.xml')) {
     gutil.log(gutil.colors.red('Mandatory file \'phpcs.xml\' does not exists.'));
     return;
@@ -27,7 +27,7 @@ gulp.task('style:fix', 'Auto fix the php code styling using php code beautifier.
     .on('error', gutil.log);
 });
 
-gulp.task('style:codestyle', 'Check the code style using php code sniffer. Requires a phpcs.xml configuration file.', ['composer:install'], function () {
+gulp.task('style:codestyle', 'Check the code style using php code sniffer. Requires a phpcs.xml configuration file.', function () {
   if(!fileExists('phpcs.xml')) {
     gutil.log(gutil.colors.red('Mandatory file \'phpcs.xml\' does not exists.'));
     return;

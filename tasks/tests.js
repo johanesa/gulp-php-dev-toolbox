@@ -14,10 +14,13 @@ var knownOptions = {
 
 var commandLineOptions = minimist(process.argv.slice(2), knownOptions);
 
-gulp.task('tests', 'Run the selected unit tests with phpunit. Requires a phpunit.xml.dist configuration file.', ['clear:coverage', 'composer:install'], function() {
+gulp.task('tests', 'Run the selected unit tests with phpunit. Requires a phpunit.xml.dist configuration file.', ['clear:coverage'], function() {
   var options;
+  var projectRoot = gulp.task.configuration.projectRoot;
 
   options = {};
+
+  gutil.log(gutil.colors.blue('Running task \'tests\' in directoy: ' + projectRoot));
 
   if (commandLineOptions.testsuite || commandLineOptions.s) {
     options.testSuite = commandLineOptions.testsuite || commandLineOptions.s;
@@ -31,14 +34,19 @@ gulp.task('tests', 'Run the selected unit tests with phpunit. Requires a phpunit
     options.filter = commandLineOptions.test || commandLineOptions.t;
   }
 
-  if(!fileExists('phpunit.xml.dist')) {
+  if(!fileExists(projectRoot + '/phpunit.xml.dist')) {
     gutil.log(gutil.colors.red('Mandatory file \'phpunit.xml.dist\' does not exists.'));
     return;
   }
 
-  return gulp.src('phpunit.xml.dist')
+  return gulp.src('', {read: false})
+    .pipe(shell(['cd ' +
+      ['vendor/bin/phpmd ' + source + ' text codesize,unusedcode,naming,design,cleancode,controversial']
+    ]));
+
+  return gulp.src(projectRoot + '/phpunit.xml.dist', {cwd: projectRoot})
     .pipe(gulpif(options.coverageHtml, gulp.dest('coverage/')))
-    .pipe(phpunit('./vendor/bin/phpunit', options));
+    .pipe(phpunit(projectRoot + '/vendor/bin/phpunit', options));
 },{
   options: {
     'test | t': 'Run a single test. Example gulp tests --test [testname]',
@@ -48,7 +56,9 @@ gulp.task('tests', 'Run the selected unit tests with phpunit. Requires a phpunit
 });
 
 gulp.task('clear:coverage', 'Clear the coverage reports files.', function() {
-  return del(['coverage/**']);
+  var projectRoot = gulp.task.configuration.projectRoot;
+
+  return del([projectRoot +'/coverage/**'], {force: true});
 });
 
 gulp.task('default', ['tests']);

@@ -10,7 +10,7 @@ var knownOptions = {
 };
 var commandLineOptions = minimist(process.argv.slice(2), knownOptions);
 
-gulp.task('structure:duplication', 'Detection for duplicate code. Default scr/ directory is checked.', ['composer:install'], function () {
+gulp.task('structure:duplication', 'Detection for duplicate code. Default scr/ directory is checked.', function () {
   var source = ['scr/**/*.php'];
 
   if(commandLineOptions.source) {
@@ -32,7 +32,7 @@ gulp.task('structure:duplication', 'Detection for duplicate code. Default scr/ d
   }
 });
 
-gulp.task('structure:complexity', 'Check the complexity of the code. Default scr/ directory is checked.', ['composer:install'], function() {
+gulp.task('structure:complexity', 'Check the complexity of the code. Default scr/ directory is checked.', function() {
   var source = 'scr/';
 
   if(commandLineOptions.source) {
