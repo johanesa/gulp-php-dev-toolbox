@@ -1,15 +1,20 @@
 #!/bin/bash
 
-if [ -z "$1" ]
+echo "Installing the php dev toolbox tasks to the project."
+
+DEST=$(pwd)
+SRC=$(pwd)/vendor/rregeer/gulp-php-dev-toolbox
+
+if [ ! -z "$1" ]
 then
-  echo "No setup destination directory argument supplied."
-  exit 1
+  echo "Using setup destination directory $1"
+  DEST=$1
 fi
 
-if [ -z "$2" ]
+if [ ! -z "$2" ]
 then
-  echo "No setup source directory argument supplied."
-  exit 1
+  echo "Using setup source directory $2"
+  SRC=$1
 fi
 
 if [ ! -d $1 ]
@@ -17,13 +22,16 @@ then
   mkdir $1
 fi
 
-cd $2
+cd $SRC
 
-cp gulpfile.js $1
-cp package.json $1
-cp dev-toolbox.config.json $1
-cp -r tasks $1
-cd $1
+cp gulpfile.js $DEST
+cp package.json $DEST
+cp dev-toolbox.config.json $DEST
+cp -r tasks $DEST
+cd $DEST
 rm -rf node_modules
 npm install
 npm install gulp -g
+gulp composer:install
+
+echo "Php dev toolbox install is finished. Use 'gulp help' to see all the available tasks."

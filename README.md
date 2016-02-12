@@ -12,11 +12,12 @@ There are multiple ways to setup and use the toolbox. The php tools can be added
 
 ## Install as composer dev dependency
 The most easy one is using composer. Add this repository as a dependency to the composer.json file.
-Composer will not automatically call scripts from dependencies. To setup the toolbox in your project you have to call the setup.sh script in the toolbox.
+Composer will not automatically call scripts from dependencies. To setup the toolbox in your project you have to call the setup-php-toolbox script in the toolbox from the project root.
+
 ```bash
 composer require --dev rregeer/gulp-php-dev-toolbox
 composer install
-vendor/bin/setup-php-toolbox <path/to/your/project/> <path/of/your/project>/vendor/rregeer/gulp-php-dev-toolbox/
+vendor/bin/setup-php-toolbox
 ```
 
 ## Install it manually by using git
