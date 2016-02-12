@@ -12,20 +12,20 @@ There are multiple ways to setup and use the toolbox. The php tools can be added
 
 ## Install as composer dev dependency
 The most easy one is using composer. Add this repository as a dependency to the composer.json file.
+Composer will not automatically call scripts from dependencies. To setup the toolbox in your project you have to call the setup.sh script in the toolbox.
 ```bash
 composer require --dev rregeer/gulp-php-dev-toolbox
 composer install
+vendor/rregeer/gulp-php-dev-toolbox/scripts/setup.sh <path/to/your/project/> <path/of/your/project>/vendor/rregeer/gulp-php-dev-toolbox/
 ```
-Run composer install in your project and the magic happens. The toolbox will copy itself to your project and is now a part of it. You are free the commit the tasks and other toolbox files.
 
 ## Install it manually by using git
-Just clone the git repository and start the setup script. The setup script will  copy the toolbox to the given destination directory. If you want it to be a part of your project use your project root. If no destination or source directory is given the current working directory will be used.
+Just clone the git repository and start the setup script. The setup script will copy the toolbox to the given destination directory. If you want it to be a part of your project use your project root. The second argument of the setup script is the source directory of the toolbox.
 ```bash
 git clone git://github.com/richardregeer/gulp-php-dev-toolbox.git
 cd gulp-php-dev-toolbox
-./scripts/setup.sh <path/to/destination> <source/toolbox>
+./scripts/setup.sh <path/to/destination> ./
 cd <path/to/destination>
-gulp composer:install
 ```
 
 If you just want to install it in the dev-toolbox directory itself, you can also directly call npm install.

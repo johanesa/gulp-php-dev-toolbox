@@ -26,4 +26,3 @@ cp dev-toolbox.config.json $1
 cp -r tasks $1
 cd $1
 npm install
-gulp composer:install
