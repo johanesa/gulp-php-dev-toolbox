@@ -5,30 +5,26 @@ var del = require('del');
 var gutil = require('gulp-util');
 
 var knownOptions = {
-  boolean: ['clean']
+  boolean: ['force']
 };
 
 var commandLineOptions = minimist(process.argv.slice(2), knownOptions);
 
 gulp.task('composer:install', 'Install all the required dependencies.', function () {
-  if (commandLineOptions.clean) {
-    del(['vendor/']);
-    gutil.log(gutil.colors.blue('Clean install triggerd, the composer vendor directory will be removed.'));
+  if (commandLineOptions.force) {
+    del(['vendor/', 'composer.lock']);
+    gutil.log(gutil.colors.blue('Forced install triggerd, removing the vendor diretory and composer lock file.'));
   }
 
   return composer();
 },{
   options: {
-    'clean': 'Clears the vendor folder before install the packages. For example gulp composer:install --clear'
+    'force': 'Clears the vendor folder and composer lockfile before install the packages. For example gulp composer:install --force'
   }
 });
 
 gulp.task('composer:update-lockfile', 'Only update the composer lock file.', function () {
   return composer('update', {lock: true});
-});
-
-gulp.task('clear:vendor', 'Clear the composer vendor folder.', function() {
-  return del(['vendor/']);
 });
 
 gulp.task('composer', ['composer:install']);

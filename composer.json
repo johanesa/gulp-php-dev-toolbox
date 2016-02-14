@@ -1,7 +1,7 @@
 {
   "name": "rregeer/gulp-php-dev-toolbox",
   "description": "Php development toolbox using the gulp taskrunner",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "keywords": [
     "Testing", "PHP", "phpunit", "Unittest", "Codestyle", "CI",
     "Code complexity", "phpcs", "phpcbf", "phplint", "Gulp", "phpmd",
