@@ -58,8 +58,8 @@ gulp.task('syntax', 'Check the php syntax using php lint. Default scr/ and tests
 
   if (commandLineOptions.source) {
     sources = _.split(commandLineOptions.source, ',');
-  } else if (_.has(gulp.task.configuration, 'tasks.style-syntax.source')) {
-    sources = gulp.task.configuration.tasks['style-syntax'].source;
+  } else if (_.has(gulp.task.configuration, 'tasks.syntax.source')) {
+    sources = gulp.task.configuration.tasks['syntax'].source;
     gutil.log(gutil.colors.blue('Read source from the configuration file: ' + sources));
   }
 
@@ -97,7 +97,7 @@ gulp.task('watch-syntax', 'Watch for file changes and execute the syntax task. D
   });
 
   gutil.log(gutil.colors.blue('Watch directory ' + sources + ' for changes and run the syntax checks on.'));
-  gulp.watch(sources, ['style-syntax']);
+  gulp.watch(sources, ['syntax']);
 }, {
   options: {
     'source': 'The directory to watch for file changes. To add multiple sources use a \',\'.Example gulp watch-syntax ' +
@@ -121,7 +121,7 @@ gulp.task('watch-codestyle', 'Watch for file changes and execute the codestyle t
   });
 
   gutil.log(gutil.colors.blue('Watch directory ' + sources + ' for changes and run the codestyle checks on.'));
-  gulp.watch(sources, ['style-codestyle']);
+  gulp.watch(sources, ['codestyle']);
 }, {
   options: {
     'source': 'The directory to watch for file changes. To add multiple sources use a \',\'.Example gulp watch-codestyle ' +
