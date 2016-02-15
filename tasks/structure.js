@@ -10,22 +10,28 @@ var gutil = require('gulp-util');
 var knownOptions = {
   string: ['source']
 };
+
 var commandLineOptions = minimist(process.argv.slice(2), knownOptions);
 
 gulp.task('structure-duplication', 'Detection for duplicate code. Default scr/ directory is checked.', function () {
-  var source = ['scr/**/*.php'];
+  var projectRoot = gulp.task.configuration.projectRoot;
+  var sources = ['scr/**/*.php'];
 
   if (commandLineOptions.source) {
-    source = _.split(commandLineOptions.source, ',');
+    sources = _.split(commandLineOptions.source, ',');
   } else if (_.has(gulp.task.configuration, 'tasks.structure-duplication.source')) {
-    source = gulp.task.configuration.tasks['structure-duplication'].source;
-    gutil.log(gutil.colors.blue('Read source from the configuration file: ' + source));
+    sources = gulp.task.configuration.tasks['structure-duplication'].source;
+    gutil.log(gutil.colors.blue('Read source from the configuration file: ' + sources));
   }
 
-  return gulp.src(source)
+  sources = _.map(sources, function (sourceValue) {
+    return projectRoot + _.trimStart(sourceValue, '/');
+  });
+
+  return gulp.src(sources)
     .pipe(phpcpd({
       minLines: 5,
-      bin: 'vendor/bin/phpcpd'
+      bin: projectRoot + '/vendor/bin/phpcpd'
     }));
 }, {
   options: {
@@ -35,18 +41,23 @@ gulp.task('structure-duplication', 'Detection for duplicate code. Default scr/ d
 });
 
 gulp.task('structure-complexity', 'Check the complexity of the code. Default scr/ directory is checked.', function () {
-  var source = 'scr/';
+  var projectRoot = gulp.task.configuration.projectRoot;
+  var sources = 'scr/';
 
   if (commandLineOptions.source) {
-    source = commandLineOptions.source;
+    sources = commandLineOptions.source;
   } else if (_.has(gulp.task.configuration, 'tasks.structure-complexity.source')) {
-    source = gulp.task.configuration.tasks['structure-complexity'].source;
-    gutil.log(gutil.colors.blue('Read source from the configuration file: ' + source));
+    sources = gulp.task.configuration.tasks['structure-complexity'].source;
+    gutil.log(gutil.colors.blue('Read source from the configuration file: ' + sources));
   }
+
+  sources = _.map(sources, function (sourceValue) {
+    return projectRoot + _.trimStart(sourceValue, '/');
+  });
 
   return gulp.src('', { read: false })
     .pipe(shell([
-      ['vendor/bin/phpmd ' + source + ' text codesize,unusedcode,naming,design,cleancode,controversial']
+      ['vendor/bin/phpmd ' + sources + ' text codesize,unusedcode,naming,design,cleancode,controversial']
     ]));
 }, {
   options: {

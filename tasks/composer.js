@@ -29,6 +29,10 @@ gulp.task('composer-update-lockfile', 'Only update the composer lock file.', fun
   return composer('update', { lock: true });
 });
 
+gulp.task('clear-composer', 'Remove the composer vendor dierctory.', function () {
+  return del(['vendor/']);
+});
+
 gulp.task('composer', ['composer-install']);
 
 gulp.task('default', ['composer-install']);

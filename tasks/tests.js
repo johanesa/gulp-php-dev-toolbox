@@ -68,7 +68,7 @@ gulp.task('clear-coverage', 'Clear the coverage reports files.', function () {
 
 gulp.task('watch-tests', 'Watch for file changes and execute the tests task. Default the tests directory will be watched.', function () {
   var projectRoot = gulp.task.configuration.projectRoot;
-  var source = projectRoot + '/tests/';
+  var source = 'tests/';
 
   if (!(commandLineOptions.test || commandLineOptions.testsuite)) {
     gutil.log(gutil.colors.red('No arguments supplied. Supply --test or --testsuite.'));
@@ -83,7 +83,9 @@ gulp.task('watch-tests', 'Watch for file changes and execute the tests task. Def
     gutil.log(gutil.colors.blue('Read source from the configuration file: ' + source));
   }
 
-  gutil.log(gutil.colors.blue('Watch directory ' + source + ' for changes and run the tests on'));
+  source = projectRoot + _.trimStart(source, '/');
+
+  gutil.log(gutil.colors.blue('Watch directory ' + source + ' for changes and run the tests on.'));
   gulp.watch(source, ['tests']);
 }, {
   options: {

@@ -66,6 +66,7 @@ Instead of setting the source of the task as a command line argument using *--so
   }
 }
 ```
+To add multiple items use an array in the json.
 
 <!-- ### projectRoot
 The project root can also be changed. This can be used if you don't want that the toolbox is a part of your project for example.

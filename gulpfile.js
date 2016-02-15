@@ -1,13 +1,16 @@
-var gulp = require('gulp-help')(require('gulp'));
-var requireDir = require("require-dir");
+'use strict';
 
-var tasks = requireDir("./tasks");
+var gulp = require('gulp-help')(require('gulp'));
+var requireDir = require('require-dir');
+
+requireDir('./tasks');
 
 var configuration = {};
+
 try {
   configuration = require('./dev-toolbox.config.json');
 }
-catch(error) {
+catch (error) {
 }
 
 gulp.task.configuration = configuration;
