@@ -32,6 +32,6 @@ cd $DEST
 rm -rf node_modules
 npm install
 npm install gulp -g
-gulp composer:install
+gulp composer-install
 
 echo "Php dev toolbox install is finished. Use 'gulp help' to see all the available tasks."

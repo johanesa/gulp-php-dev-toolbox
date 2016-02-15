@@ -21,4 +21,4 @@ if (!configuration.projectRoot) {
 
 configuration.projectRoot = gulp.task.configuration.projectRoot.trim('/');
 
-gulp.task('default', ['composer:install', 'tests', 'checkstyle']);
+gulp.task('default', ['composer-install', 'tests', 'checkstyle']);

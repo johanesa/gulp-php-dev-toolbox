@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/richardregeer/gulp-php-dev-toolbox"
   },
-  "devDependencies": {
+  "dependencies": {
     "del": "2.2.*",
     "file-exists": "1.0.*",
     "gulp": "3.9.*",
