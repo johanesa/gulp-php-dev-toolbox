@@ -42,7 +42,7 @@ gulp.task('structure-duplication', 'Detection for duplicate code. Default scr/ d
 
 gulp.task('structure-complexity', 'Check the complexity of the code using phpmd. Default scr/ directory is checked.', function () {
   var projectRoot = gulp.task.configuration.projectRoot;
-  var sources = 'scr/';
+  var sources = ['scr/'];
 
   if (commandLineOptions.source) {
     sources = commandLineOptions.source;
