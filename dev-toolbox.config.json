@@ -1,3 +1,24 @@
 {
-  "tasks": {}
+  "tasks": {
+  	/**
+  	* Exemple config file
+	*/
+  	"structure:duplication": {
+    	"source": ["test/modules/controllers/**/*.php"]
+    },
+    "live-reload": {
+    	"sites": [
+        {
+           "proxy": "default.local",
+           "sources": ["/scr/*","/css/*","/dist/*"]       
+        },
+        {
+           "proxy": "default2.local",
+           "sources": ["/ess*.css","/css/*.php","/assets/**/*.php"]       
+        }
+      ], 
+
+    }
+  }
+
 }
