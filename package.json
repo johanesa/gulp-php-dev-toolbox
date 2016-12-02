@@ -24,6 +24,7 @@
     "require-dir": "0.3.*"
   },
   "devDependencies": {
+    "browser-sync": "^2.18.2",
     "jscs": "^2.10.1",
     "jshint": "^2.9.1"
   },
